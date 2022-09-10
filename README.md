@@ -4,7 +4,7 @@
 
 ### Student Info
 
--   Name: Conor Race
+-   Name: Conor Race 
 -   Section: Section 6
 
 ## Game Design
