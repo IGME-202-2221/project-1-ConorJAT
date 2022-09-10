@@ -4,8 +4,8 @@
 
 ### Student Info
 
--   Name: YOUR NAME
--   Section: ##
+-   Name: Conor Race
+-   Section: Section 6
 
 ## Game Design
 
