@@ -1,4 +1,4 @@
-# Project PROJECT_NAME
+# SHMUP Project: Race to Draconic Heights
 
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet)
 
@@ -9,31 +9,46 @@
 
 ## Game Design
 
--   Camera Orientation: _How are the art assets viewed from? (ie. topdown or side)_
--   Camera Movement: _How does the camera move in your game? (if at all)_
--   Player Health: _How are you handling player health? (healthbar, lives, ?)_
--   End Condition: _How does a game/round/level end?_
--   Scoring: _How does the player earn points in your game?_
+-   Camera Orientation: _This game will primarily be viewed from a top-down POV._
+-   Camera Movement: _The in-game camera will slowly shift sideways, giving the illusion the player is traveling long distances._
+-   Player Health: _The player will have access to a health bar, which will decrement varied amounts based on enemy attacks.
+                    The player will also have 'X' amount of lives to be aware of._
+-   End Condition: _Levels will end in a variety of ways. My thoughts: some levels will end when reaching a specific point, some
+                    will end by collecting 'X' amount of one item, and some will end with a boss of sorts._
+-   Scoring: _The player will earn points in a variety ways: defeating enemies, collecting treasure/quest items, how much health
+              remains at the end of level, and of course, level completion._
 
 ### Game Description
 
-_A brief explanation of your game. Inculde what is the objective for the player. Think about what would go on the back of a game box._
+~ Here in the magic rich land of Acadia, soar to new heights as you learn to fly your first dragon! As a young dragon rider, you are
+welcomed to participate in the "Race to Draconic Heights"! Complete various challenges the Race has to offer, while also uncovering
+a dark mystery in the midst of it all! But be careful, as you aren't the only one looking to win the Race! WIll you triumph to
+victory as the next "Champion of Fire"? ~
 
 ### Controls
 
 -   Movement
-    -   Up: 
-    -   Down: 
-    -   Left: 
-    -   Right: 
--   Fire: 
+    -   Up: _W / Up Arrow_ 
+    -   Down: _S / Down Arrow_
+    -   Left: _A / Left Arrow_
+    -   Right: _D / Right Arrow_
+-   Fire: _Space Bar_
 
 ## You Additions
 
-_List out what you added to your game to make it different for you_
+-   Planning
+    -   Mixed Level Endings: _I would like to try to go for a level set with diverse endings. Some that end with bosses, some that require
+        specific objects, and some that require reaching a particular point._
+    -   Environment Influence: _Depending what leg of the Race you're on, the surrounding environment will offer an interesting side effect
+        to the player, which will offer unique challenges for the player (i.e: snowy section = reduced movement speed)._
+    -   Skill Swap (Post-Death): _Should a player die while in the middle of a level, I would like to create a system that will allow them
+        to swap their fighting style should they choose to help them better acclimate to the level (all levels will still be possible will
+        all skills, but some skills might be more effective in certain levels)._
+-   Added: TBD
 
 ## Sources
 
+-   Dragon Sprite (Sep 25, 2022) - https://www.pngkit.com/bigpic/u2w7a9t4q8t4a9i1/
 -   _List all project sources here –models, textures, sound clips, assets, etc._
 -   _If an asset is from the Unity store, include a link to the page and the author’s name_
 
