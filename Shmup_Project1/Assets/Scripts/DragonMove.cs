@@ -13,7 +13,7 @@ public class DragonMove : MonoBehaviour
     Vector3 dragPos = Vector3.zero;
 
     // Direction of dragon
-    Vector3 direction = Vector3.zero;
+    Vector3 direction = new Vector3(1f, 0f, 0f);
 
     // Velocity of dragon
     Vector3 velocity = Vector3.zero;
@@ -71,10 +71,5 @@ public class DragonMove : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         direction = context.ReadValue<Vector2>();
-
-        if (direction != Vector3.zero)
-        {
-            transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
-        }
     }
 }
