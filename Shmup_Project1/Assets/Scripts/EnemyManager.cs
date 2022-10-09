@@ -51,6 +51,7 @@ public class EnemyManager : MonoBehaviour
     }
 
 
+    // Spawns new ghost enemies
     SpriteRenderer SpawnGhost()
     {
         SpriteRenderer spawnedGhost;
@@ -63,6 +64,7 @@ public class EnemyManager : MonoBehaviour
     }
 
 
+    // Tests if ghost enemy is out of bounds
     bool OutOfBounds(SpriteRenderer gPos)
     {
         if (gPos.bounds.center.x < (-totalCamWidth / 2f) - 1f ||

@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class BulletManager : MonoBehaviour
 {
+    // Player Bullets (Fireballs)
     List<SpriteRenderer> spawnedFire = new List<SpriteRenderer>();
 
     [SerializeField]
@@ -14,6 +15,14 @@ public class BulletManager : MonoBehaviour
     GameObject player;
 
     SpriteInfo dragPos;
+
+
+    // Enemy Bullets (Skulls)
+    List<SpriteRenderer> spawnedSkulls = new List<SpriteRenderer>();
+
+    [SerializeField]
+    GameObject skull;
+
 
     float totalCamHeight;
 
@@ -31,6 +40,7 @@ public class BulletManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Destroy and remove any out of bound fireballs
         for (int i = spawnedFire.Count - 1; i > -1; i--)
         {
             // Checks if fireball is out of bounds
@@ -41,6 +51,21 @@ public class BulletManager : MonoBehaviour
 
                 // Remove fireball from list
                 spawnedFire.RemoveAt(i);
+            }
+        }
+
+
+        // Destroy and remove any out of bound skulls
+        for (int i = spawnedSkulls.Count - 1; i > -1; i--)
+        {
+            // Checks if skull is out of bounds
+            if (spawnedSkulls[i].bounds.center.x < totalCamWidth / 2f)
+            {
+                // Destroy skull object
+                Destroy(spawnedSkulls[i].gameObject);
+
+                // Remove skull from list
+                spawnedSkulls.RemoveAt(i);
             }
         }
     }
@@ -57,11 +82,24 @@ public class BulletManager : MonoBehaviour
 
             dragPos = player.GetComponent<SpriteInfo>();
             firePos = new Vector3(dragPos.Center.x + dragPos.RadiusX,
-                              dragPos.Center.y, 0);
+                                  dragPos.Center.y, 0f);
 
             newFireball = Instantiate(fireball, firePos, Quaternion.identity).GetComponent<SpriteRenderer>();
 
             spawnedFire.Add(newFireball);
         }
+    }
+
+
+    SpriteRenderer EnemyFire(SpriteRenderer ghost)
+    {
+        SpriteRenderer newSkull;
+
+        Vector3 skullPos = new Vector3(ghost.bounds.center.x - ghost.bounds.extents.x,
+                                       ghost.bounds.center.y, 0f);
+
+        newSkull = Instantiate(skull, skullPos, Quaternion.identity).GetComponent<SpriteRenderer>();
+
+        return newSkull;
     }
 }
