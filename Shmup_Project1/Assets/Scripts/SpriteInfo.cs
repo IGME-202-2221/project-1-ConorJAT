@@ -42,9 +42,14 @@ public class SpriteInfo : MonoBehaviour
         get { return mySprite.bounds.center; }
     }
 
-    public float Radius
+    public float RadiusY
     {
         get { return mySprite.bounds.extents.y; }
+    }
+
+    public float RadiusX
+    {
+        get { return mySprite.bounds.extents.x; }
     }
 
 

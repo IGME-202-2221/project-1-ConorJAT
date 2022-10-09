@@ -13,7 +13,7 @@ public class DragonMove : MonoBehaviour
     Vector3 dragPos = Vector3.zero;
 
     // Direction of dragon
-    Vector3 direction = new Vector3(1f, 0f, 0f);
+    Vector3 direction = Vector3.zero;
 
     // Velocity of dragon
     Vector3 velocity = Vector3.zero;
@@ -63,7 +63,7 @@ public class DragonMove : MonoBehaviour
             dragPos = new Vector3(dragPos.x, -totalCamHeight / 2f, 0);
         }
 
-        // "Draws" vehicle to said position
+        // "Draws" dragon to said position
         transform.position = dragPos;
     }
 
