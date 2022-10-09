@@ -349,6 +349,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99ee4f8bedcf7546bb73d269c353d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myBullets: {fileID: 707228188}
+  myGhosts: {fileID: 743400924}
+  Collide: {fileID: 632537181}
+  player: {fileID: 1546378518}
 --- !u!1 &707228185
 GameObject:
   m_ObjectHideFlags: 0

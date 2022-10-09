@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls movement for fireball projectiles.
+/// </summary>
 public class FireballMove : MonoBehaviour
 {
     // Speed of fireball

@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls Enemy management, including:
+///  - How enemies are spawned.
+///  - How enemies attack.
+///  - How enemies are removed.
+/// </summary>
 public class EnemyManager : MonoBehaviour
 {
     List<SpriteRenderer> spawnedGhosts = new List<SpriteRenderer>();
@@ -15,6 +21,14 @@ public class EnemyManager : MonoBehaviour
     float totalCamHeight;
 
     float totalCamWidth;
+
+
+    public List<SpriteRenderer> Ghosts
+    {
+        get { return spawnedGhosts; } 
+        set { spawnedGhosts = value; }
+    }
+
 
     // Start is called before the first frame update
     void Start()

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls movement for skull projectiles.
+/// </summary>
 public class SkullMove : MonoBehaviour
 {
     // Speed of skull projectile

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Controls movement for the player.
+/// </summary>
 public class DragonMove : MonoBehaviour
 {
     // Speed of dragon

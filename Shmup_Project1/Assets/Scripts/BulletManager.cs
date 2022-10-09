@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Controls bullet management, including:
+///  - Player fireball controls.
+///  - Player fireball spawn and deletion.
+///  - Enemy skull spawn and deletion.
+/// </summary>
 public class BulletManager : MonoBehaviour
 {
     // Player Bullets (Fireballs)
@@ -16,17 +22,31 @@ public class BulletManager : MonoBehaviour
 
     SpriteInfo dragPos;
 
-
     // Enemy Bullets (Skulls)
     List<SpriteRenderer> spawnedSkulls = new List<SpriteRenderer>();
 
     [SerializeField]
     GameObject skull;
 
-
+    // Screen Borders
     float totalCamHeight;
 
     float totalCamWidth;
+
+
+    // Properties
+    public List<SpriteRenderer> Fireballs
+    {
+        get { return spawnedFire; }
+        set { spawnedFire = value; }
+    }
+
+    public List<SpriteRenderer> Skulls
+    {
+        get { return spawnedSkulls; }
+        set { spawnedSkulls = value; }
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -91,6 +111,7 @@ public class BulletManager : MonoBehaviour
     }
 
 
+    // Enemy shoots a skull
     public void EnemyFire(SpriteRenderer ghost)
     {
         SpriteRenderer newSkull;

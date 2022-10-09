@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Provides info on all sprites (prefabs) and their stats.
+/// </summary>
 public class SpriteInfo : MonoBehaviour
 {
     private SpriteRenderer mySprite;
     
-
     // Sprite Size
     public Vector3 Size
     {
@@ -66,8 +68,4 @@ public class SpriteInfo : MonoBehaviour
     {
         mySprite = GetComponent<SpriteRenderer>();
     }
-
-
-    // Update is called once per frame
-    void Update() {}
 }

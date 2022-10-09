@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls movement for ghost enemies.
+/// </summary>
 public class GhostMove : MonoBehaviour
 {
     // Speed of ghost
