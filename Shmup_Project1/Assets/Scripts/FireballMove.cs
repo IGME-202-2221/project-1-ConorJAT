@@ -26,11 +26,6 @@ public class FireballMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dragPos = player.GetComponent<SpriteInfo>();
-
-        firePos = new Vector3(dragPos.Center.x + dragPos.RadiusX,
-                              dragPos.Center.y, 0);
-
         firePos = transform.position;
     }
 
