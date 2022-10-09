@@ -17,11 +17,6 @@ public class FireballMove : MonoBehaviour
     // Velocity of fireball
     Vector3 velocity = Vector3.zero;
 
-    [SerializeField]
-    GameObject player;
-
-    SpriteInfo dragPos;
-
 
     // Start is called before the first frame update
     void Start()

@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e489c529f818d5c41829a3cbc7cbfd96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerFire: {fileID: 7697934153220182048, guid: 85272fa71ae71b649932f945826ef854, type: 3}
+  fireball: {fileID: 7697934153220182048, guid: 85272fa71ae71b649932f945826ef854, type: 3}
   player: {fileID: 1546378518}
 --- !u!1 &743400922
 GameObject:
@@ -391,6 +391,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 743400923}
+  - component: {fileID: 743400924}
   m_Layer: 0
   m_Name: EnemyManager
   m_TagString: Untagged
@@ -413,6 +414,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &743400924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743400922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8feab0cd7d24d7e4582dbfaedcc1d25f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghost: {fileID: 2341846344128613088, guid: 5ba176eefff512243b33a2f8da53bd51, type: 3}
 --- !u!1 &1546378518 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 232273587588393442, guid: 6c8822b2c1d01b244aee8722fbc0b4aa, type: 3}
