@@ -9,6 +9,9 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     GameObject ghost;
 
+    [SerializeField]
+    BulletManager ghostBullets;
+
     float totalCamHeight;
 
     float totalCamWidth;
@@ -26,12 +29,46 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
         // Spawn Ghost Phase
+        float spawnChance = Random.Range(0f, 1f);
 
-        // Only 5 ghosts allowed on screen at a time
-        if (spawnedGhosts.Count < 5)
+        // Max of 5 ghosts at a time
+        // The more ghosts, the less likely another will spawn
+        switch (spawnedGhosts.Count)
         {
-            // Adds spawned ghost to list
-            spawnedGhosts.Add(SpawnGhost());
+            case 0:
+                spawnedGhosts.Add(SpawnGhost());
+                break;
+
+            case 1:
+                if (spawnChance < .9f * Time.deltaTime)
+                {
+                    spawnedGhosts.Add(SpawnGhost());
+                }
+                break;
+
+            case 2:
+                if (spawnChance < .65f * Time.deltaTime)
+                {
+                    spawnedGhosts.Add(SpawnGhost());
+                }
+                break;
+
+            case 3:
+                if (spawnChance < .4f * Time.deltaTime)
+                {
+                    spawnedGhosts.Add(SpawnGhost());
+                }
+                break;
+
+            case 4:
+                if (spawnChance < .2f * Time.deltaTime)
+                {
+                    spawnedGhosts.Add(SpawnGhost());
+                }
+                break;
+
+            default:
+                break;
         }
 
 
@@ -46,6 +83,18 @@ public class EnemyManager : MonoBehaviour
 
                 // Remove ghost from list
                 spawnedGhosts.RemoveAt(i);
+            }
+        }
+
+
+        // Ghost Attack Phase
+        for (int i = 0; i < spawnedGhosts.Count; i++)
+        {
+            float attackChance = Random.Range(0f, 1f);
+
+            if (attackChance < 0.15f * Time.deltaTime)
+            {
+                ghostBullets.EnemyFire(spawnedGhosts[i]);
             }
         }
     }

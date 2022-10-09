@@ -59,7 +59,7 @@ public class BulletManager : MonoBehaviour
         for (int i = spawnedSkulls.Count - 1; i > -1; i--)
         {
             // Checks if skull is out of bounds
-            if (spawnedSkulls[i].bounds.center.x < totalCamWidth / 2f)
+            if (spawnedSkulls[i].bounds.center.x < -totalCamWidth / 2f)
             {
                 // Destroy skull object
                 Destroy(spawnedSkulls[i].gameObject);
@@ -91,7 +91,7 @@ public class BulletManager : MonoBehaviour
     }
 
 
-    SpriteRenderer EnemyFire(SpriteRenderer ghost)
+    public void EnemyFire(SpriteRenderer ghost)
     {
         SpriteRenderer newSkull;
 
@@ -100,6 +100,6 @@ public class BulletManager : MonoBehaviour
 
         newSkull = Instantiate(skull, skullPos, Quaternion.identity).GetComponent<SpriteRenderer>();
 
-        return newSkull;
+        spawnedSkulls.Add(newSkull);
     }
 }

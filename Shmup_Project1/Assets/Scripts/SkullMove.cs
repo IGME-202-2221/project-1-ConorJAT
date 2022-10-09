@@ -17,20 +17,10 @@ public class SkullMove : MonoBehaviour
     // Velocity of skull projectile
     Vector3 velocity = Vector3.zero;
 
-    [SerializeField]
-    GameObject ghost;
-
-    SpriteInfo gPos;
-
 
     // Start is called before the first frame update
     void Start()
     {
-        gPos = ghost.GetComponent<SpriteInfo>();
-
-        skullPos = new Vector3(gPos.Center.x - gPos.RadiusX,
-                               gPos.Center.y, 0);
-
         skullPos = transform.position;
     }
 

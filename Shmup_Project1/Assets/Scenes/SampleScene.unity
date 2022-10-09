@@ -302,6 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 632537180}
   - component: {fileID: 632537181}
+  - component: {fileID: 632537182}
   m_Layer: 0
   m_Name: CollisionManager
   m_TagString: Untagged
@@ -334,6 +335,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 392c77ed7355039439047cf01a6ad108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &632537182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632537179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b99ee4f8bedcf7546bb73d269c353d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &707228185
@@ -382,6 +395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireball: {fileID: 7697934153220182048, guid: 85272fa71ae71b649932f945826ef854, type: 3}
   player: {fileID: 1546378518}
+  skull: {fileID: 6894903887505232560, guid: 5e71c495694eaa745ad280b3e83b680b, type: 3}
 --- !u!1 &743400922
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,6 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghost: {fileID: 2341846344128613088, guid: 5ba176eefff512243b33a2f8da53bd51, type: 3}
+  ghostBullets: {fileID: 707228188}
 --- !u!1 &1546378518 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 232273587588393442, guid: 6c8822b2c1d01b244aee8722fbc0b4aa, type: 3}
