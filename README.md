@@ -49,6 +49,9 @@ victory as the next "Champion of Fire"? ~
 ## Sources
 
 -   Dragon Sprite (Sep 25, 2022) - https://www.pngkit.com/bigpic/u2w7a9t4q8t4a9i1/
+-   Ghost Sprite (Oct 8, 2022) - https://www.deviantart.com/arsheraldica/art/Ghost-sprite-348944971
+-   Fireball Sprite (Oct 8, 2022) - https://www.clipartmax.com/max/m2H7K9d3N4N4d3H7/
+-   Skull Sprite (Oct 8, 2022) - https://www.deviantart.com/goncho03/art/RPG-Flaming-Skull-772140912
 -   _List all project sources here –models, textures, sound clips, assets, etc._
 -   _If an asset is from the Unity store, include a link to the page and the author’s name_
 
