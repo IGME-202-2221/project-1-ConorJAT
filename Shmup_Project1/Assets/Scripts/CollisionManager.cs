@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Controls all collision scenarios that may occur in game:
@@ -21,7 +22,21 @@ public class CollisionManager : MonoBehaviour
     DetectCollision Collide;
 
     [SerializeField]
+    GameManager gameStats;
+
+    [SerializeField]
     GameObject player;
+
+
+    [SerializeField]
+    Text score;
+
+    [SerializeField]
+    Text health;
+
+    [SerializeField]
+    Text lives;
+
 
     // Update is called once per frame
     void Update()
@@ -34,6 +49,11 @@ public class CollisionManager : MonoBehaviour
                 Destroy(myBullets.Skulls[i].gameObject);
 
                 myBullets.Skulls.RemoveAt(i);
+
+                gameStats.TakeDamage(10);
+
+                health.text = "Health: " + gameStats.Health.ToString() + "%";
+                lives.text = "Lives: " + gameStats.Lives.ToString() + "x";
             }
         }
 
@@ -49,6 +69,10 @@ public class CollisionManager : MonoBehaviour
 
                     myBullets.Fireballs.RemoveAt(j);
                     myGhosts.Ghosts.RemoveAt(i);
+
+                    gameStats.Score += 30;
+
+                    score.text = "Score: " + gameStats.Score.ToString();
                 }
             }
         }
@@ -61,6 +85,11 @@ public class CollisionManager : MonoBehaviour
                 Destroy(myGhosts.Ghosts[i].gameObject);
 
                 myGhosts.Ghosts.RemoveAt(i);
+
+                gameStats.TakeDamage(10);
+
+                health.text = "Health: " + gameStats.Health.ToString() + "%";
+                lives.text = "Lives: " + gameStats.Lives.ToString() + "x";
             }
         }
 
