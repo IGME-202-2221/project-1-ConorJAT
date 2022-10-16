@@ -16,7 +16,7 @@ public class CollisionManager : MonoBehaviour
     BulletManager myBullets;
 
     [SerializeField]
-    EnemyManager myGhosts;
+    EnemyManager myEnemies;
 
     [SerializeField]
     DetectCollision Collide;
@@ -57,18 +57,34 @@ public class CollisionManager : MonoBehaviour
             }
         }
 
+        // Player v. Blue Fire
+        for (int i = myBullets.EvilFire.Count - 1; i > -1; i--)
+        {
+            if (Collide.AABBCollision(player, myBullets.EvilFire[i].gameObject))
+            {
+                Destroy(myBullets.EvilFire[i].gameObject);
+
+                myBullets.EvilFire.RemoveAt(i);
+
+                gameStats.TakeDamage(20);
+
+                health.text = "Health: " + gameStats.Health.ToString() + "%";
+                lives.text = "Lives: " + gameStats.Lives.ToString() + "x";
+            }
+        }
+
         // Fire v. Ghosts
-        for (int i = myGhosts.Ghosts.Count - 1; i > -1; i--)
+        for (int i = myEnemies.Ghosts.Count - 1; i > -1; i--)
         {
             for (int j = myBullets.Fireballs.Count - 1; j > -1; j--)
             {
-                if (Collide.AABBCollision(myBullets.Fireballs[j].gameObject, myGhosts.Ghosts[i].gameObject))
+                if (Collide.AABBCollision(myBullets.Fireballs[j].gameObject, myEnemies.Ghosts[i].gameObject))
                 {
                     Destroy(myBullets.Fireballs[j].gameObject);
-                    Destroy(myGhosts.Ghosts[i].gameObject);
+                    Destroy(myEnemies.Ghosts[i].gameObject);
 
                     myBullets.Fireballs.RemoveAt(j);
-                    myGhosts.Ghosts.RemoveAt(i);
+                    myEnemies.Ghosts.RemoveAt(i);
 
                     gameStats.Score += 30;
 
@@ -77,16 +93,52 @@ public class CollisionManager : MonoBehaviour
             }
         }
 
-        // Player v. Ghosts
-        for (int i = myGhosts.Ghosts.Count - 1; i > -1; i--)
+        // Fire v. Evil Dragons
+        for (int i = myEnemies.Dragons.Count - 1; i > -1; i--)
         {
-            if (Collide.AABBCollision(player, myGhosts.Ghosts[i].gameObject))
+            for (int j = myBullets.Fireballs.Count - 1; j > -1; j--)
             {
-                Destroy(myGhosts.Ghosts[i].gameObject);
+                if (Collide.AABBCollision(myBullets.Fireballs[j].gameObject, myEnemies.Dragons[i].gameObject))
+                {
+                    Destroy(myBullets.Fireballs[j].gameObject);
+                    Destroy(myEnemies.Dragons[i].gameObject);
 
-                myGhosts.Ghosts.RemoveAt(i);
+                    myBullets.Fireballs.RemoveAt(j);
+                    myEnemies.Dragons.RemoveAt(i);
 
-                gameStats.TakeDamage(10);
+                    gameStats.Score += 60;
+
+                    score.text = "Score: " + gameStats.Score.ToString();
+                }
+            }
+        }
+
+        // Player v. Ghosts
+        for (int i = myEnemies.Ghosts.Count - 1; i > -1; i--)
+        {
+            if (Collide.AABBCollision(player, myEnemies.Ghosts[i].gameObject))
+            {
+                Destroy(myEnemies.Ghosts[i].gameObject);
+
+                myEnemies.Ghosts.RemoveAt(i);
+
+                gameStats.TakeDamage(20);
+
+                health.text = "Health: " + gameStats.Health.ToString() + "%";
+                lives.text = "Lives: " + gameStats.Lives.ToString() + "x";
+            }
+        }
+
+        // Player v. Evil Dragons
+        for (int i = myEnemies.Dragons.Count - 1; i > -1; i--)
+        {
+            if (Collide.AABBCollision(player, myEnemies.Dragons[i].gameObject))
+            {
+                Destroy(myEnemies.Dragons[i].gameObject);
+
+                myEnemies.Dragons.RemoveAt(i);
+
+                gameStats.TakeDamage(40);
 
                 health.text = "Health: " + gameStats.Health.ToString() + "%";
                 lives.text = "Lives: " + gameStats.Lives.ToString() + "x";

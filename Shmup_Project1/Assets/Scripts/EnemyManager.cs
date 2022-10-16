@@ -10,13 +10,22 @@ using UnityEngine;
 /// </summary>
 public class EnemyManager : MonoBehaviour
 {
+    // Ghosts
     List<SpriteRenderer> spawnedGhosts = new List<SpriteRenderer>();
 
     [SerializeField]
     GameObject ghost;
 
+
+    // Evil Dragons
+    List<SpriteRenderer> spawnedDrakes = new List<SpriteRenderer>();
+
     [SerializeField]
-    BulletManager ghostBullets;
+    GameObject dragon;
+
+
+    [SerializeField]
+    BulletManager bullets;
 
     float totalCamHeight;
 
@@ -27,6 +36,12 @@ public class EnemyManager : MonoBehaviour
     {
         get { return spawnedGhosts; } 
         set { spawnedGhosts = value; }
+    }
+
+    public List<SpriteRenderer> Dragons
+    {
+        get { return spawnedDrakes; }
+        set { spawnedDrakes = value; }
     }
 
 
@@ -42,7 +57,7 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Spawn Ghost Phase
+        // Spawn Enemy Phase
         float spawnChance = Random.Range(0f, 1f);
 
         // Max of 5 ghosts at a time
@@ -86,6 +101,36 @@ public class EnemyManager : MonoBehaviour
         }
 
 
+        // Max of 3 evil dragons at a time
+        // The more dragons, the less likely another will spawn
+        switch (spawnedDrakes.Count)
+        {
+            case 0:
+                if (spawnChance < .6f * Time.deltaTime)
+                {
+                    spawnedDrakes.Add(SpawnDrake());
+                }
+                break;
+
+            case 1:
+                if (spawnChance < .25f * Time.deltaTime)
+                {
+                    spawnedDrakes.Add(SpawnDrake());
+                }
+                break;
+
+            case 2:
+                if (spawnChance < .05f * Time.deltaTime)
+                {
+                    spawnedDrakes.Add(SpawnDrake());
+                }
+                break;
+
+            default:
+                break;
+        }
+
+
         // Clear Ghost Phase
         for (int i = spawnedGhosts.Count - 1; i > -1; i--)
         {
@@ -108,7 +153,19 @@ public class EnemyManager : MonoBehaviour
 
             if (attackChance < 0.15f * Time.deltaTime)
             {
-                ghostBullets.EnemyFire(spawnedGhosts[i]);
+                bullets.GhostFire(spawnedGhosts[i]);
+            }
+        }
+
+
+        // Evil Dragon Attack Phase
+        for (int i = 0; i < spawnedDrakes.Count; i++)
+        {
+            float attackChance = Random.Range(0f, 1f);
+
+            if (attackChance < 0.15f * Time.deltaTime)
+            {
+                bullets.DrakeFire(spawnedDrakes[i]);
             }
         }
     }
@@ -124,6 +181,19 @@ public class EnemyManager : MonoBehaviour
         spawnedGhost = Instantiate(ghost, gPos, Quaternion.identity).GetComponent<SpriteRenderer>();
 
         return spawnedGhost;
+    }
+
+
+    // Spawns new evil dragon enemies
+    SpriteRenderer SpawnDrake()
+    {
+        SpriteRenderer spawnedDrake;
+
+        Vector3 dPos = new Vector3((totalCamWidth / 2f) + 1f, Random.Range(-totalCamHeight / 2f, totalCamHeight / 2f), 0f);
+
+        spawnedDrake = Instantiate(dragon, dPos, Quaternion.identity).GetComponent<SpriteRenderer>();
+
+        return spawnedDrake;
     }
 
 

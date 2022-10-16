@@ -28,6 +28,12 @@ public class BulletManager : MonoBehaviour
     [SerializeField]
     GameObject skull;
 
+    // Enemy Bullets (Blue Fire)
+    List<SpriteRenderer> spawnedEvilFire = new List<SpriteRenderer>();
+
+    [SerializeField]
+    GameObject evilFireball;
+
     // Screen Borders
     float totalCamHeight;
 
@@ -45,6 +51,12 @@ public class BulletManager : MonoBehaviour
     {
         get { return spawnedSkulls; }
         set { spawnedSkulls = value; }
+    }
+
+    public List<SpriteRenderer> EvilFire
+    {
+        get { return spawnedEvilFire; }
+        set { spawnedEvilFire = value; }
     }
 
 
@@ -88,6 +100,21 @@ public class BulletManager : MonoBehaviour
                 spawnedSkulls.RemoveAt(i);
             }
         }
+
+
+        // Destroy and remove any out of bound evil fireballs
+        for (int i = spawnedEvilFire.Count - 1; i > -1; i--)
+        {
+            // Checks if skull is out of bounds
+            if (spawnedEvilFire[i].bounds.center.x < -totalCamWidth / 2f)
+            {
+                // Destroy skull object
+                Destroy(spawnedEvilFire[i].gameObject);
+
+                // Remove skull from list
+                spawnedEvilFire.RemoveAt(i);
+            }
+        }
     }
 
 
@@ -111,8 +138,8 @@ public class BulletManager : MonoBehaviour
     }
 
 
-    // Enemy shoots a skull
-    public void EnemyFire(SpriteRenderer ghost)
+    // Ghost enemy shoots a skull
+    public void GhostFire(SpriteRenderer ghost)
     {
         SpriteRenderer newSkull;
 
@@ -122,5 +149,29 @@ public class BulletManager : MonoBehaviour
         newSkull = Instantiate(skull, skullPos, Quaternion.identity).GetComponent<SpriteRenderer>();
 
         spawnedSkulls.Add(newSkull);
+    }
+
+
+    // Evil Dragon enemy shoots a fireball trio
+    public void DrakeFire(SpriteRenderer drake)
+    {
+        SpriteRenderer newFire1;
+        SpriteRenderer newFire2;
+        SpriteRenderer newFire3;
+
+        Vector3 firePos = new Vector3(drake.bounds.center.x - drake.bounds.extents.x,
+                                      drake.bounds.center.y, 0f);
+
+        newFire1 = Instantiate(evilFireball, firePos, Quaternion.Euler(0, 0, -15)).GetComponent<SpriteRenderer>();
+        newFire2 = Instantiate(evilFireball, firePos, Quaternion.identity).GetComponent<SpriteRenderer>();
+        newFire3 = Instantiate(evilFireball, firePos, Quaternion.Euler(0, 0, 15)).GetComponent<SpriteRenderer>();
+
+        newFire1.gameObject.GetComponent<EvilFireMove>().Direction = new Vector3(-1f, 0.268f, 0f);
+        newFire2.gameObject.GetComponent<EvilFireMove>().Direction = Vector3.left;
+        newFire3.gameObject.GetComponent<EvilFireMove>().Direction = new Vector3(-1f, -0.268f, 0f);
+
+        spawnedEvilFire.Add(newFire1);
+        spawnedEvilFire.Add(newFire2);
+        spawnedEvilFire.Add(newFire3);
     }
 }
